@@ -3,6 +3,7 @@ FROM ubuntu:22.04
 ARG USER
 
 RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y \
     sudo openssl openjdk-8-jdk perl libxml-simple-perl \
     git-core gnupg flex bison build-essential zip curl zlib1g-dev \
