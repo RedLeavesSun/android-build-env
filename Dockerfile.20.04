@@ -2,6 +2,10 @@ FROM ubuntu:20.04
 
 ARG USER
 
+RUN DEBIAN_FRONTEND=noninteractive TZ=Asia/Shanghai \
+    apt-get update && \
+    apt-get install -y tzdata
+
 RUN apt-get update && \
     apt-get install -y \
     sudo openssl openjdk-8-jdk perl libxml-simple-perl \
