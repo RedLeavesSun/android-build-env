@@ -14,4 +14,7 @@ RUN apt-get update && \
     apt-get install -y \
     python python3
 
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 2
+
 RUN useradd -m -p `openssl passwd -1 -salt 'salt' admin` ${USER} && usermod -a -G sudo ${USER}
