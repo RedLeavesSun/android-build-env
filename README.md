@@ -16,11 +16,11 @@ container.
 ```shell
 git clone https://github.com/RedLeavesSun/android-build-env.git
 cd android-build-env
-docker build --build-arg USER=${USER} -t aosp-build -f <docker file> .
+docker build --build-arg USER=${USER} -t aosp-build:<tag> -f <docker file> .
 ```
 
 ## Run
 ```shell
 cd <your project>
-docker run -it -v `pwd`:/prj -u 1000 aosp-build
+docker run -it -v `pwd`:/prj -u 1000 aosp-build:<tag>
 ```
