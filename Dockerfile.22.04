@@ -21,6 +21,8 @@ RUN apt-get update && \
     apt-get install -y \
     python2 python3
 
+RUN apt autoremove -y
+
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2 1
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 2
 
