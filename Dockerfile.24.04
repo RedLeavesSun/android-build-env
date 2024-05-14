@@ -1,0 +1,28 @@
+FROM ubuntu:24.04
+
+ARG USER
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    sudo openssl openjdk-8-jdk perl libxml-simple-perl \
+    rsync util-linux uuid-dev \
+    git-core gnupg flex bison build-essential zip curl zlib1g-dev \
+    libc6-dev-i386 x11proto-core-dev \
+    libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc \
+    unzip fontconfig cmake cpio libssl-dev cgpt xxd file wget bc
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
+RUN apt-get update && \
+    apt-get install -y \
+    python3
+
+RUN apt autoremove -y
+
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+RUN useradd -m -p `openssl passwd -1 -salt 'salt' admin` ${USER} && usermod -a -G sudo ${USER}
